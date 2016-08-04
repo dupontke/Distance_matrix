@@ -3,6 +3,8 @@
 # ----------------------------------------
 # USAGE:
 
+# ./matrix_calc.py pdb_file traj_loc start end system_descriptor
+
 # ----------------------------------------
 # PREAMBLE:
 
@@ -10,6 +12,7 @@ import sys
 import numpy as np
 from numpy.linalg import *
 import MDAnalysis
+import MDAnalysis.analysis.distances
 from distance_functions import *
 
 # ----------------------------------------
@@ -19,6 +22,7 @@ pdb_file = sys.argv[1]
 traj_loc = sys.argv[2]
 start = int(sys.argv[3])
 end = int(sys.argv[4])
+system = sys.argv[5]
 
 zeros = np.zeros
 square = np.square
@@ -43,6 +47,11 @@ u_important = u.select_atoms(important)
 nRes = len(u_important.residues)
 ffprint(nRes)
 
+res_list = []
+for i in range(nRes):
+	res_list.append(u_important.residues[i].select_atoms('not name H*'))
+	res0 = res_list[i].positions
+
 avg_matrix = zeros((nRes,nRes))
 std_matrix = zeros((nRes,nRes))
 
@@ -57,14 +66,19 @@ while start <= end:
 			ffprint('Working on timestep %d of trajectory %d' %(ts.frame, start))
 
 		for i in range(nRes-1):
-			res0 = u_important.residues[i]
-			com0 = res0.center_of_mass()
+			res0 = res_list[i].positions
 			for j in range(i+1,nRes):
-				res1 = u_important.residues[j]
-				com1 = res1.center_of_mass()
-				dist, dist2 = euclid_dist(com0,com1)
-				avg_matrix[i,j] += dist
-				std_matrix[i,j] += dist2
+				res1 = res_list[j].positions
+				min_dist = 9999.
+				for k in range(len(res_list[i])):
+					atom0 = res0[k]
+					for m in range(len(res_list[j])):
+						atom1 = res1[m]
+						dist, dist2 = euclid_dist(atom0,atom1)
+						if dist < min_dist:
+							min_dist = dist
+				avg_matrix[i,j] += min_dist
+				std_matrix[i,j] += min_dist*min_dist
 	start +=1
 
 ffprint(nSteps)
@@ -73,8 +87,8 @@ avg_matrix /= nSteps
 std_matrix /= nSteps
 std_matrix = sqrt(std_matrix - square(avg_matrix))
 
-out1 = open('%03d.%03d.avg_distance_matrix.dat' %(int(sys.argv[3]),end),'w')
-out2 = open('%03d.%03d.std_distance_matrix.dat' %(int(sys.argv[3]),end),'w')
+out1 = open('%03d.%03d.%s.avg_distance_matrix.dat' %(int(sys.argv[3]),end,system),'w')
+out2 = open('%03d.%03d.%s.std_distance_matrix.dat' %(int(sys.argv[3]),end,system),'w')
 for i in range(nRes):
 	for j in range(nRes):
 		out1.write('%10f   ' %(avg_matrix[i,j]))
