@@ -7,6 +7,7 @@
 # PREAMBLE:
 
 import numpy as np
+import math
 
 sqrt = np.sqrt
 sums = np.sum
@@ -72,4 +73,3 @@ def euclid_dist(x,y,):
 	dist2 = sums(square(x-y))
 	dist = sqrt(dist2)
 	return dist, dist2
-
