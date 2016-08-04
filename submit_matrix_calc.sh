@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name=dist_cal.a_apo
-#SBATCH --output=dist_cal.a_apo.output
+#SBATCH --job-name=dist_cal.wt_1
+#SBATCH --output=dist_cal.wt_1.output
 #SBATCH --time=96:00:00 
 #SBATCH --nodes=1
 #SBATCH --exclusive
@@ -10,9 +10,10 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/software/usr/hpcx-v1.2.0-292-gcc-MLNX_
 
 export PYTHON_EGG_CACHE="./"
 
-PDB_LOC='~/Projects/Molecular_Machines/Helicase_DNS3/Analysis/AMBER_apo/truncated.pdb'
-TRAJ_LOC='~/Projects/Molecular_Machines/Helicase_DNS3/Analysis/AMBER_apo/Truncated'
-NPRODS=150
+PDB_LOC='/mnt/lustre_fs/users/dupontke/research/3evg/wt/velocity.1/md/traj/truncated.pdb'
+TRAJ_LOC='/mnt/lustre_fs/users/dupontke/research/3evg/wt/velocity.1/md/traj/Truncated/'
+SYSTEM='wt_1'
+NPRODS=27
 NCPUS=20
 
 prod=1
@@ -22,15 +23,15 @@ do
 	while ((j <= $NCPUS)) && ((prod <= $NPRODS))
 	do
 		echo $j $i $prod
-		((a=$prod+4))
+		((a=$prod))
 		printf -v x "%03d" $prod
 		printf -v y "%03d" $a
-		mkdir $x.$y.distance_matrix
-		cd $x.$y.distance_matrix
-		time ../matrix_calc.py $PDB_LOC $TRAJ_LOC $prod $a > dist_calc.output & 
+		mkdir $x.distance_matrix
+		cd $x.distance_matrix
+		time /mnt/lustre_fs/users/mjmcc/apps/python2.7/bin/python ../matrix_calc.py $PDB_LOC $TRAJ_LOC $prod $a $SYSTEM > dist_calc.output & 
 		cd ../
 		((j=$j+1))
-		((prod=$prod+5))
+		((prod=$prod+1))
 	done
 	wait
 done
