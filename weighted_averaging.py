@@ -16,6 +16,7 @@ from plotting_functions import *
 
 window_file = sys.argv[1]
 nRes = int(sys.argv[2])
+system = sys.argv[3]
 
 zeros = np.zeros
 change_dir = os.chdir
@@ -37,9 +38,9 @@ std_array = zeros((nRes,nRes))
 
 nSteps = 0
 for i in range(nWindows):
-	change_dir('%03d.%03d.distance_matrix' %(window_data[i][0],window_data[i][1]))
-	avg_file = '%03d.%03d.avg_distance_matrix.dat' %(window_data[i][0],window_data[i][1])
-	std_file = '%03d.%03d.std_distance_matrix.dat' %(window_data[i][0],window_data[i][1])
+	change_dir('%03d.distance_matrix' %(window_data[i][0]))
+	avg_file = '%03d.%03d.%s.avg_distance_matrix.dat' %(window_data[i][0],window_data[i][1],system)
+	std_file = '%03d.%03d.%s.std_distance_matrix.dat' %(window_data[i][0],window_data[i][1],system)
 	avg_data = np.loadtxt(avg_file)
 	std_data = np.loadtxt(std_file)
 
@@ -62,8 +63,8 @@ for i in range(nRes-1):
 		avg_array[j][i] = avg_array[i][j]
 		std_array[j][i] = std_array[i][j]
 
-out1 = open('%03d.%03d.avg_distance_matrix.dat' %(window_data[0][0],window_data[-1][1]),'w')
-out2 = open('%03d.%03d.std_distance_matrix.dat' %(window_data[0][0],window_data[-1][1]),'w')
+out1 = open('%03d.%03d.%s.avg_distance_matrix.dat' %(window_data[0][0],window_data[-1][1],system),'w')
+out2 = open('%03d.%03d.%s.std_distance_matrix.dat' %(window_data[0][0],window_data[-1][1],system),'w')
 for i in range(nRes):
 	for j in range(nRes):
 		out1.write('%f   ' %(avg_array[i][j]))
@@ -73,6 +74,6 @@ for i in range(nRes):
 out1.close()
 out2.close()
 
-matrix2d(avg_array,'Residue Number','Residue Number','Distance','avg','%03d.%03d' %(window_data[0][0],window_data[-1][1]),vmin=0.001,vmax=45,plt_title='Average COM-COM Residue Distance (Traj %03d - %03d)' %(window_data[0][0],window_data[-1][1]),cb_units='$\AA$')
+matrix2d(avg_array,'Residue Number','Residue Number','Distance','avg','%03d.%03d' %(window_data[0][0],window_data[-1][1]),vmin=0.001,vmax=45,plt_title='Average Minimum Residue Distance (Traj %03d - %03d)' %(window_data[0][0],window_data[-1][1]),cb_units='$\AA$')
 matrix2d(std_array,'Residue Number','Residue Number','Distance','std','%03d.%03d' %(window_data[0][0],window_data[-1][1]),vmin=0.001,vmax=6,plt_title='Standard Deviation (Traj %03d - %03d)' %(window_data[0][0],window_data[-1][1]),cb_units='$\AA$')
 
