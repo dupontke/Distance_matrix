@@ -69,16 +69,16 @@ while start <= end:
 			res0 = res_list[i].positions
 			for j in range(i+1,nRes):
 				res1 = res_list[j].positions
-				min_dist = 9999.
+				min_dist2 = 9999.
 				for k in range(len(res_list[i])):
 					atom0 = res0[k]
 					for m in range(len(res_list[j])):
 						atom1 = res1[m]
-						dist, dist2 = euclid_dist(atom0,atom1)
-						if dist < min_dist:
-							min_dist = dist
-				avg_matrix[i,j] += min_dist
-				std_matrix[i,j] += min_dist*min_dist
+						dist2 = euclid_dist2(atom0,atom1)
+						if dist2 < min_dist2:
+							min_dist2 = dist2
+				avg_matrix[i,j] += sqrt(min_dist2)
+				std_matrix[i,j] += min_dist2
 	start +=1
 
 ffprint(nSteps)
