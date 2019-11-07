@@ -1,0 +1,54 @@
+1 1 95
+2 1 96
+3 1 97
+4 1 98
+5 1 99
+6 1 100
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.names` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.names` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.indices` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.indices` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.names` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.indices` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.names` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.indices` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.names` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.indices` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.names` instead.
+  DeprecationWarning)
+/mnt/lustre_fs/users/mjmcc/apps/python2.7/lib/python2.7/site-packages/MDAnalysis/core/AtomGroup.py:477: DeprecationWarning: In version 0.16.0, use `residue.atoms.indices` instead.
+  DeprecationWarning)
+
+real	5035m18.755s
+user	5038m13.354s
+sys	0m1.444s
+
+real	5060m7.385s
+user	5063m16.465s
+sys	0m1.477s
+
+real	5085m9.498s
+user	5088m19.090s
+sys	0m1.416s
+
+real	5114m46.376s
+user	5117m57.007s
+sys	0m1.687s
+
+real	5124m14.447s
+user	5127m25.147s
+sys	0m1.420s
+
+real	5147m14.567s
+user	5150m26.719s
+sys	0m1.656s

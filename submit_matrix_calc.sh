@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=dist_cal.wt_1
-#SBATCH --output=dist_cal.wt_1.output
-#SBATCH --time=96:00:00 
+#SBATCH --job-name=dist_cal.wt_ssrna_atp_1
+#SBATCH --output=dist_cal.wt_ssrna_atp_1.output
+#SBATCH --time=999:00:00 
 #SBATCH --nodes=1
 #SBATCH --exclusive
 
@@ -10,13 +10,13 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/software/usr/hpcx-v1.2.0-292-gcc-MLNX_
 
 export PYTHON_EGG_CACHE="./"
 
-PDB_LOC='/mnt/lustre_fs/users/dupontke/research/3evg/wt/velocity.1/md/traj/truncated.pdb'
-TRAJ_LOC='/mnt/lustre_fs/users/dupontke/research/3evg/wt/velocity.1/md/traj/Truncated/'
-SYSTEM='wt_1'
-NPRODS=27
+PDB_LOC='/mnt/lustre_fs/users/dupontke/research/hNS3_project/ssrna_atp/wt_ssrna_atp/velocity.1/md/traj/truncated.pdb'
+TRAJ_LOC='/mnt/lustre_fs/users/dupontke/research/hNS3_project/ssrna_atp/wt_ssrna_atp/velocity.1/md/traj/Truncated/'
+SYSTEM='wt_ssrna_atp_1'
+NPRODS=100
 NCPUS=20
 
-prod=1
+prod=95
 for ((i=1;i<=2;i++))
 do
 	j=1

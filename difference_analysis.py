@@ -18,9 +18,9 @@ descriptor = sys.argv[1]	# descriptor to decide which trajectory group to analyz
 
 # description of sys_list.append(['velocity number','equilibrated portion of the system for that specific velocity number'])
 sys_list = []
-sys_list.append(['velocity.1','008.027','wt_1'])
-sys_list.append(['velocity.2','010.027','wt_2'])
-sys_list.append(['velocity.3','017.027','wt_3'])
+sys_list.append(['velocity.1','095.100','s411a_ssrna_atp_1'])
+#sys_list.append(['velocity.2','010.027','wt_2'])
+#sys_list.append(['velocity.3','017.027','wt_3'])
 
 
 nSys = len(sys_list)
